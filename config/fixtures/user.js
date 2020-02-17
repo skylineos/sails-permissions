@@ -18,7 +18,7 @@ exports.create = function (roles, userModel) {
       if (user) return user;
 
       sails.log.info('sails-permissions: admin user does not exist; creating...');
-      return sails.models.user.register({
+      return sails.models.user.register(_.merge(sails.config.permissions.defaultAdminUser, {
         username: sails.config.permissions.adminUsername,
         password: sails.config.permissions.adminPassword,
         email: sails.config.permissions.adminEmail,
@@ -26,6 +26,6 @@ exports.create = function (roles, userModel) {
         createdBy: 1,
         owner: 1,
         model: userModel.id
-      });
+      }));
   });
 };
