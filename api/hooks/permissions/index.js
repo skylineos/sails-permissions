@@ -1,3 +1,9 @@
+'use strict';
+
+const path = require('path');
+const _ = require('lodash');
+const Marlinspike = require('marlinspike');
+
 var permissionPolicies = [
   'passport',
   'sessionAuth',
@@ -5,10 +11,7 @@ var permissionPolicies = [
   'OwnerPolicy',
   'PermissionPolicy',
   'RolePolicy'
-]
-import path from 'path'
-import _ from 'lodash'
-import Marlinspike from 'marlinspike'
+];
 
 class Permissions extends Marlinspike {
   constructor (sails) {
@@ -137,4 +140,4 @@ class Permissions extends Marlinspike {
   }
 }
 
-export default Marlinspike.createSailsHook(Permissions)
+module.exports = Marlinspike.createSailsHook(Permissions);
