@@ -2,10 +2,9 @@
   "name": "sails-permissions",
   "version": "2.2.0",
   "description": "Comprehensive user permissions and entitlements system for sails.js and Waterline. Supports user authentication with passport.js, role-based permissioning, object ownership, and row-level security.",
-  "main": "dist/api/hooks/permissions/index.js",
+  "main": "api/hooks/permissions/index.js",
   "scripts": {
-    "test": "gulp && mocha --reporter spec --compilers js:babel/register",
-    "prepublish": "gulp"
+    "test": "gulp && mocha --reporter spec --compilers js:babel/register"
   },
   "repository": {
     "type": "git",
@@ -37,13 +36,11 @@
   },
   "homepage": "https://github.com/tjwebb/sails-permissions",
   "devDependencies": {
-    "babel": "^5.8.21",
-    "gulp": "^3.9.0",
-    "gulp-babel": "^5.2.1",
+    "gulp": "^4.0.0",
     "jshint": "^2.8.0",
     "mocha": "^2.x.x",
     "request": "^2.58.0",
-    "sails": "balderdashy/sails",
+    "sails": "0.12.14",
     "sails-memory": "^0.10.5",
     "supertest": "^0.15.0",
     "waterline-postgresql": "^0.12.0"
@@ -53,7 +50,6 @@
     "lodash": "^3.10.0",
     "marlinspike": "^1.0",
     "pluralize": "^1.0.1",
-    "sails-auth": "^2.0",
     "sails-generate-entities": "latest",
     "waterline-criteria": "^0.11.1"
   },
@@ -62,6 +58,9 @@
     "lodash",
     "pluralize"
   ],
+  "peerDependencies": {
+    "sails-auth": "*"
+  },
   "engines": {
     "node": ">= 0.10",
     "npm": ">= 2.3"
