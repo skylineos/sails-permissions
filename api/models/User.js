@@ -32,6 +32,7 @@ _.merge(exports, {
         });
     },
     function attachDefaultRole (user, next) {
+      var roleExists = false;
       sails.log('User.afterCreate.attachDefaultRole', user);
       User.findOne(user.id)
         .populate('roles')
@@ -40,11 +41,16 @@ _.merge(exports, {
           return Role.findOne({ name: 'registered' });
         })
         .then(function (role) {
-          user.roles.add(role.id);
+          if (role) {
+            roleExists = true;
+            user.roles.add(role.id);
+          }
           return user.save();
         })
         .then(function (updatedUser) {
-          sails.log.silly('role "registered" attached to user', user.username);
+          if (roleExists) {
+            sails.log.silly('role "registered" attached to user', user.username);
+          }
           next();
         })
         .catch(function (e) {
